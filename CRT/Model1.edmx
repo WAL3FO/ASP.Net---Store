@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="iCarts" EntityType="DataModel.Store.iCarts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="iOrders" EntityType="DataModel.Store.iOrders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="iProducts" EntityType="DataModel.Store.iProducts" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="iCarts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="account_id" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="product_name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="product_descript" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="product_price" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="product_qua" Type="int" Nullable="false" />
+    <Property Name="product_img" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="iOrders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="account_id" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="order_delivery" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="order_price" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="product_name" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="iProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Price" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Img" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="iCarts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="account_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_descript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_qua" Type="Int32" Nullable="false" />
+          <Property Name="product_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="iOrders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="account_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="order_delivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="order_price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="product_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="iProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="iCarts" EntityType="Self.iCarts" />
+          <EntitySet Name="iOrders" EntityType="Self.iOrders" />
+          <EntitySet Name="iProducts" EntityType="Self.iProducts" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataEntities">
+    <EntitySetMapping Name="iCarts">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.iCarts)">
+        <MappingFragment StoreEntitySet="iCarts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_descript" ColumnName="product_descript" />
+          <ScalarProperty Name="product_price" ColumnName="product_price" />
+          <ScalarProperty Name="product_qua" ColumnName="product_qua" />
+          <ScalarProperty Name="product_img" ColumnName="product_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="iOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.iOrders)">
+        <MappingFragment StoreEntitySet="iOrders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="order_delivery" ColumnName="order_delivery" />
+          <ScalarProperty Name="order_price" ColumnName="order_price" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="iProducts">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.iProducts)">
+        <MappingFragment StoreEntitySet="iProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

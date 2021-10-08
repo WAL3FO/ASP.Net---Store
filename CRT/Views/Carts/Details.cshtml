@@ -1,0 +1,74 @@
+﻿@model CRT.iCarts
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>iCarts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.account_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_descript)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_descript)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_qua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_qua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_img)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

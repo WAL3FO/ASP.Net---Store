@@ -1,0 +1,74 @@
+﻿@model CRT.iProducts
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+
+            <div class="invoice p-3 mb-3">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-12">
+                        <h4>
+                            <i class="fas fa-globe"></i> Softechers, Inc.
+                            <small class="float-right">Date : @DateTime.Now</small>
+                        </h4>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                </div>
+                <!-- /.row -->
+                <!-- Table row -->
+                <div class="row">
+                    <div class="col-12 table-responsive">
+                        <table class="table table-striped">
+                            <img src="@Html.DisplayFor(model => model.Img)" alt="@Html.DisplayFor(model => model.Name)" class="img-circle img-size-32 mr-2" style="border-radius:5px; width:10%;">
+                            <br />
+                            <br />
+                            <thead>
+                                <tr>
+                                    <th>Qty</th>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>@Html.DisplayFor(model => model.Name)</td>
+                                    <td>@Html.DisplayFor(model => model.Description)</td>
+                                    <td>$@Html.DisplayFor(model => model.Price)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row no-print">
+                    <div class="col-12">
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("addIntoCart", "Products", new { @productId = @Html.DisplayFor(model => model.Id) }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-success float-right">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button> }
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-danger float-right">
+                                You are not logged !
+                            </button>}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.row -->
